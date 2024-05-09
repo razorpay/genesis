@@ -1,0 +1,11 @@
+name: Semgrep Scans
+on:
+  pull_request: {}
+  push:
+    branches: ["master"]
+  schedule:
+    - cron: "0 17 * * *"
+jobs:
+  Security-Scan:
+    uses: razorpay/genesis/.github/workflows/semgrep.yml@master
+    secrets: inherit
