@@ -18,4 +18,4 @@ jobs:
       - name: run on public repo
         run: semgrep ci &> /dev/null
         env:
-          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN_PUBLIC }}
