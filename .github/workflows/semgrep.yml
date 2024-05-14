@@ -3,7 +3,7 @@ name: Scan
 on:
   workflow_call:
     secrets:
-      SEMGREP_APP_TOKEN:
+      SEMGREP_APP_TOKEN_PUBLIC:
         required: true
         description: "required for scan"
 
