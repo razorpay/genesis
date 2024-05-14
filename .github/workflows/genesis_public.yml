@@ -1,8 +1,7 @@
 name: Semgrep Scans
 on:
   pull_request: {}
-  push:
-    branches: ["master"]
+  push: {}
   schedule:
     - cron: "0 17 * * *"
 jobs:
