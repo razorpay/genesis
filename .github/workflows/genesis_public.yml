@@ -1,4 +1,4 @@
-name: Semgrep Scans
+name: Quality Checks
 on:
   pull_request: {}
   push:
@@ -6,6 +6,6 @@ on:
   schedule:
     - cron: "0 17 * * *"
 jobs:
-  Security-Scan:
-    uses: razorpay/genesis/.github/workflows/semgrep.yml@master
+  Code-Analysis:
+    uses: razorpay/genesis/.github/workflows/quality-checks.yml@master
     secrets: inherit
