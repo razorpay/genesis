@@ -1,27 +1,19 @@
-name: Scan
-
+name: Code Quality
 on:
   workflow_call:
     secrets:
       SEMGREP_APP_TOKEN_PUBLIC:
         required: true
-        description: "required for scan"
-
+        description: "required for analysis"
 jobs:
-  public-repo-job:
-    # runs-on: ubuntu-latest
-
-    # steps:
-    #   - name: Skip job
-    #     run: echo "This job is intentionally left blank."
-
+  validation-job:
     runs-on: ubuntu-latest
     if: ${{ github.event.repository.private == false }}
     container:
       image: semgrep/semgrep
     steps:
       - uses: actions/checkout@v4.0.0
-      - name: run on public repo
+      - name: code quality analysis
         run: semgrep ci --pro-intrafile &> /dev/null
         env:
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN_PUBLIC }}
