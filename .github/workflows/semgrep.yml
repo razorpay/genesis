@@ -9,19 +9,19 @@ on:
 
 jobs:
   public-repo-job:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Skip job
-        run: echo "This job is intentionally left blank."
-
     # runs-on: ubuntu-latest
-    # if: ${{ github.event.repository.private == false }}
-    # container:
-    #   image: semgrep/semgrep
+
     # steps:
-    #   - uses: actions/checkout@v4.0.0
-    #   - name: run on public repo
-    #     run: semgrep ci &> /dev/null
-    #     env:
-    #       SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN_PUBLIC }}
+    #   - name: Skip job
+    #     run: echo "This job is intentionally left blank."
+
+    runs-on: ubuntu-latest
+    if: ${{ github.event.repository.private == false }}
+    container:
+      image: semgrep/semgrep
+    steps:
+      - uses: actions/checkout@v4.0.0
+      - name: run on public repo
+        run: semgrep ci --pro-intrafile &> /dev/null
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN_PUBLIC }}
